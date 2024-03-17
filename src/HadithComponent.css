@@ -38,3 +38,27 @@
 .generate-button:hover {
   background-color: #0056b3;
 }
+
+.favorite-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.favorite-button:hover {
+  background-color: #0056b3;
+}
+
+.favorite-button.favorited {
+  background-color: #dc3545;
+}
+
+.favorite-button.favorited:hover {
+  background-color: #c82333;
+}
+
