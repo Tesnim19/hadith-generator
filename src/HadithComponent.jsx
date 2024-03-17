@@ -1,38 +1,44 @@
-import React, { useState } from 'react';
-import './HadithComponent.css'; // Import CSS file for styling
+import React, { useState, useEffect } from 'react';
+import './HadithComponent.css';
 
 const HadithComponent = () => {
-  // State to store the fetched Hadith
   const [hadith, setHadith] = useState(null);
+  const [isFavorite, setIsFavorite] = useState(false);
 
-  // Function to fetch a random Hadith
+  useEffect(() => {
+    fetchHadith();
+  }, []);
+
   const fetchHadith = async () => {
     try {
-      // Make an API call to fetch the Hadith
-      const response = await fetch('https://api.example.com/random-hadith');
+      const response = await fetch('https://api.example.com/hadith/random');
       const data = await response.json();
-
-      // Update the state with the fetched Hadith
       setHadith(data);
+      // Reset favorite status when new Hadith is fetched
+      setIsFavorite(false);
     } catch (error) {
       console.error('Error fetching Hadith:', error);
     }
   };
 
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+  };
+
   return (
     <div className="hadith-container">
-      <h1 className="title">Today's Hadith</h1>
-      {/* Conditionally render the Hadith content */}
+      <h1 className="hadith-title">Today's Hadith</h1>
       {hadith ? (
         <div className="hadith-content">
           <p className="hadith-text">{hadith.text}</p>
-          <p className="hadith-explanation">Explanation: {hadith.explanation}</p>
-          {/* Add more details as needed */}
+          <p className="hadith-reference">- {hadith.reference}</p>
         </div>
       ) : (
-        <p className="placeholder">Click the button to generate a Hadith</p>
+        <p className="loading-message">Fetching Hadith...</p>
       )}
-      {/* Button to generate a new Hadith */}
+      <button className={`favorite-button ${isFavorite ? 'favorited' : ''}`} onClick={toggleFavorite}>
+        {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+      </button>
       <button className="generate-button" onClick={fetchHadith}>Generate</button>
     </div>
   );
