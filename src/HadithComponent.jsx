@@ -26,20 +26,26 @@ const HadithComponent = () => {
   };
 
   return (
-    <div className="hadith-container">
-      <h1 className="hadith-title">Today's Hadith</h1>
-      {hadith ? (
-        <div className="hadith-content">
-          <p className="hadith-text">{hadith.text}</p>
-          <p className="hadith-reference">- {hadith.reference}</p>
-        </div>
-      ) : (
-        <p className="loading-message">Fetching Hadith...</p>
-      )}
-      <button className={`favorite-button ${isFavorite ? 'favorited' : ''}`} onClick={toggleFavorite}>
-        {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
-      </button>
-      <button className="generate-button" onClick={fetchHadith}>Generate</button>
+    <div className="hadith-card">
+      <div className="hadith-header">
+        <h1 className="hadith-title">Today's Hadith</h1>
+        {hadith && (
+          <button className={`favorite-button ${isFavorite ? 'favorited' : ''}`} onClick={toggleFavorite}>
+            <i className={`fas fa-heart ${isFavorite ? 'favorited' : ''}`}></i>
+          </button>
+        )}
+      </div>
+      <div className="hadith-content">
+        {hadith ? (
+          <>
+            <p className="hadith-text">{hadith.text}</p>
+            <p className="hadith-reference">- {hadith.reference}</p>
+          </>
+        ) : (
+          <p className="no-hadith-message">Press 'Generate Hadith' to get a new Hadith.</p>
+        )}
+      </div>
+      <button className="generate-button" onClick={fetchHadith}>Generate Hadith</button>
     </div>
   );
 };
