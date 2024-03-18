@@ -1,11 +1,20 @@
-.hadith-container {
-  text-align: center;
+.hadith-card {
+  background-color: #fff;
+  border-radius: 8px;
   padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.title {
-  font-size: 24px;
-  margin-bottom: 20px;
+.hadith-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.hadith-title {
+  color: #333;
+  font-size: 1.5rem;
 }
 
 .hadith-content {
@@ -13,33 +22,30 @@
 }
 
 .hadith-text {
-  font-size: 18px;
+  font-size: 1.1rem;
+}
+
+.hadith-reference {
   font-style: italic;
+  color: #666;
 }
 
-.hadith-explanation {
-  font-size: 16px;
-}
-
-.placeholder {
+.no-hadith-message {
+  color: #888;
   font-style: italic;
-}
-
-.generate-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.generate-button:hover {
-  background-color: #0056b3;
 }
 
 .favorite-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.favorited {
+  color: #dc3545;
+}
+
+.generate-button {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -47,18 +53,8 @@
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 10px;
 }
 
-.favorite-button:hover {
+.generate-button:hover {
   background-color: #0056b3;
 }
-
-.favorite-button.favorited {
-  background-color: #dc3545;
-}
-
-.favorite-button.favorited:hover {
-  background-color: #c82333;
-}
-
