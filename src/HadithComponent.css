@@ -27,11 +27,11 @@
 
 .hadith-reference {
   font-style: italic;
-  color: #666;
+  color: #4c4b4b;
 }
 
 .no-hadith-message {
-  color: #888;
+  color: #aea8a8;
   font-style: italic;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .favorited {
-  color: #dc3545;
+  color: #a3454e;
 }
 
 .generate-button {
