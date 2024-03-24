@@ -15,6 +15,7 @@ const HadithComponent = () => {
       const data = await response.json();
       setHadith(data);
       // Reset favorite status when new Hadith is fetched
+      
       setIsFavorite(false);
     } catch (error) {
       console.error('Error fetching Hadith', error);
