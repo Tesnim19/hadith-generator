@@ -30,12 +30,16 @@
   color: #4c4b4b;
 }
 
-.no-hadith-message {
+.no-hadith-message,
+.loading-message,
+.error-message {
   color: #aea8a8;
   font-style: italic;
+  text-align: center;
 }
 
-.favorite-button {
+.favorite-button,
+.share-button {
   background: none;
   border: none;
   cursor: pointer;
