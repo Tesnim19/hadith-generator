@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './HadithComponent.css';
+import '../styles/HadithComponent.css';
 
 const HadithComponent = () => {
   const [hadith, setHadith] = useState(null);
+  const [chapter, setChapter] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -14,10 +15,23 @@ const HadithComponent = () => {
   const fetchHadith = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('https://api.example.com/hadith/random');
-      const data = await response.json();
-      setHadith(data);
-      setIsFavorite(false); // Reset favorite status when new Hadith is fetched
+      // Fetch a random book slug
+      const books = ['sahih-bukhari', 'sahih-muslim', 'al-tirmidhi', 'abu-dawood', 'ibn-e-majah', 'sunan-nasai', 'mishkat', 'musnad-ahmad', 'al-silsila-sahiha'];
+      const randomBookSlug = books[Math.floor(Math.random() * books.length)];
+
+      // Fetch the chapters of the selected book
+      const chapterResponse = await fetch(`https://www.hadithapi.com/api/books/${randomBookSlug}?apiKey=$2y$10$LRtmSYoqezCWBRryl1i9eTeqlpyPqTNuhz6KyCVkB3ExvNlrCWiG`);
+      const chapterData = await chapterResponse.json();
+      const randomChapter = chapterData.chapters[Math.floor(Math.random() * chapterData.chapters.length)];
+
+      // Fetch a random Hadith from the selected book and chapter
+      const hadithResponse = await fetch(`https://www.hadithapi.com/api/hadiths/?apiKey=$2y$10$LRtmSYoqezCWBRryl1i9eTeqlpyPqTNuhz6KyCVkB3ExvNlrCWiG&book=${randomBookSlug}&chapter=${randomChapter.chapterNumber}`);
+      const hadithData = await hadithResponse.json();
+      const randomHadith = hadithData.hadiths[Math.floor(Math.random() * hadithData.hadiths.length)];
+
+      setHadith(randomHadith);
+      setChapter(randomChapter);
+      setIsFavorite(false);
       setIsLoading(false);
     } catch (error) {
       setError('Error fetching Hadith. Please try again later.');
@@ -58,6 +72,7 @@ const HadithComponent = () => {
             <>
               <p className="hadith-text">{hadith.text}</p>
               <p className="hadith-reference">- {hadith.reference}</p>
+              {chapter && <p className="chapter-info">Chapter: {chapter.chapterNumber} - {chapter.chapterTitle}</p>}
             </>
           ) : (
             <p className="no-hadith-message">Press 'Generate Hadith' to get a new Hadith.</p>
