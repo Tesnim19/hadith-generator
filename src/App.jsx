@@ -2,7 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import HadithComponent from './HadithComponent.jsx'
+import HadithComponent from './components/HadithComponent.jsx'
+
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -10,6 +11,7 @@ function App() {
   return (
     <>
     <div className="App">
+   
       <HadithComponent />
     </div>
     </>
