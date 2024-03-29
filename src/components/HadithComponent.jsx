@@ -19,19 +19,18 @@ const HadithComponent = () => {
       const booksResponse = await fetch('https://www.hadithapi.com/api/books?apiKey=$2y$10$LRtmSYoqezCWBRryl1i9eTeqlpyPqTNuhz6KyCVkB3ExvNlrCWiG');
       const booksData = await booksResponse.json();
   
-     
       // Randomly select a book from the list
       const randomBook = booksData.books[Math.floor(Math.random() * booksData.books.length)];
-      console.log(randomBook.bookName)
+      
       // Fetch the chapters for the selected book
-      const chaptersResponse = await fetch(`https://www.hadithapi.com/api/books/${randomBook.bookName}chapters/?apiKey=$2y$10$LRtmSYoqezCWBRryl1i9eTeqlpyPqTNuhz6KyCVkB3ExvNlrCWiG`);
+      const chaptersResponse = await fetch(`https://www.hadithapi.com/api/${randomBook.slug}/chapters?apiKey=$2y$10$LRtmSYoqezCWBRryl1i9eTeqlpyPqTNuhz6KyCVkB3ExvNlrCWiG`);
       const chaptersData = await chaptersResponse.json();
       
       // Randomly select a chapter from the list
       const randomChapter = chaptersData.chapters[Math.floor(Math.random() * chaptersData.chapters.length)];
       
       // Fetch a random Hadith from the selected book and chapter
-      const hadithResponse = await fetch(`https://www.hadithapi.com/api/hadiths?apiKey=$2y$10$LRtmSYoqezCWBRryl1i9eTeqlpyPqTNuhz6KyCVkB3ExvNlrCWiG&book=${randomBook.bookName}&chapter=${randomChapter.chapter_number}`);
+      const hadithResponse = await fetch(`https://www.hadithapi.com/api/hadiths?apiKey=$2y$10$LRtmSYoqezCWBRryl1i9eTeqlpyPqTNuhz6KyCVkB3ExvNlrCWiG&book=${randomBook.slug}&chapter=${randomChapter.chapter_number}`);
       const hadithData = await hadithResponse.json();
       
       // Randomly select a Hadith from the list
