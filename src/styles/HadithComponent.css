@@ -1,17 +1,10 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(45deg, #2c3e50, #4a627a, #2c3e50, #4a627a); /* Dark gradient */
+  background: linear-gradient(135deg, #23297a, #485563);
   background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
+  animation: gradient 15s ease infinite;
 }
 
-@keyframes gradientBG {
+@keyframes gradient {
   0% {
     background-position: 0% 50%;
   }
@@ -23,15 +16,22 @@ body {
   }
 }
 
-.hadith-card {
-  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
-  border-radius: 16px;
+.hadith-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.main-card {
+  width: 50%;
+  min-width: 300px; /* Minimum width */
+  margin-bottom: 20px;
   padding: 20px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Darker shadow */
-  transition: transform 0.3s ease;
-  max-width: 600px; /* Adjust as needed */
-  width: 100%;
-  margin-bottom: 20px; /* Add margin for spacing */
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 .hadith-header {
@@ -42,8 +42,8 @@ body {
 }
 
 .hadith-title {
-  color: #fff; /* White text */
-  font-size: 1.8rem;
+  color: #ffffff;
+  font-size: 1.5rem;
 }
 
 .hadith-content {
@@ -51,91 +51,117 @@ body {
 }
 
 .hadith-text {
-  color: #eee; /* Light gray text */
-  font-size: 1.2rem;
-  line-height: 1.5;
+  color: #ffffff;
+  font-size: 1.1rem;
 }
 
 .hadith-reference {
-  color: #ccc; /* Light gray for reference */
   font-style: italic;
+  color: #c0c0c0;
 }
 
 .no-hadith-message,
 .loading-message,
 .error-message {
-  color: #ccc; /* Light gray for messages */
+  color: #c0c0c0;
   font-style: italic;
   text-align: center;
 }
 
-.hadith-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.favorite-button,
-.share-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.favorited {
-  color: #dc3545; /* Red for favorited icon */
-}
-
 .generate-button {
-  background-color: #007bff; /* Blue for generate button */
-  color: #fff;
+  background-color: #007bff;
+  color: #ffffff;
   border: none;
   border-radius: 4px;
-  padding: 12px 24px;
-  font-size: 1rem;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .generate-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3;
 }
 
-/* Existing styles for Hadith card */
+.side-cards {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.recent-hadiths,
+.favorite-hadiths {
+  width: 48%;
+}
 
 .recent-hadiths {
-  margin-top: 40px;
+  margin-right: 2%;
 }
 
-.recent-hadiths h2 {
-  color: #fff;
+.favorite-hadiths {
+  margin-left: 2%;
+}
+
+.hadith-card {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.hadith-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.hadith-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.hadith-title {
+  color: #ffffff;
   font-size: 1.5rem;
-  margin-bottom: 10px;
 }
 
-.recent-hadiths ul {
-  list-style-type: none;
-  padding: 0;
+.hadith-content {
+  margin-bottom: 20px;
 }
 
-.recent-hadiths li {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 10px;
+.hadith-text {
+  color: #ffffff;
+  font-size: 1.1rem;
 }
 
-.recent-hadiths p {
-  color: #eee;
-  margin: 0;
-}
-
-.recent-hadiths p:first-child {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.recent-hadiths p:last-child {
+.hadith-reference {
   font-style: italic;
+  color: #c0c0c0;
 }
 
+.favorite-button,
+.remove-button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.favorite-button:hover,
+.remove-button:hover {
+  background-color: #0056b3;
+}
+
+.favorited {
+  background-color: #a3454e;
+}
+
+.favorite-button.favorited {
+  background-color: #ff0000;
+}
