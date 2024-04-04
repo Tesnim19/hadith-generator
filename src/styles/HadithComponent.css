@@ -28,7 +28,7 @@ body {
   min-width: 300px; /* Minimum width */
   margin-bottom: 20px;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.4);
   border-radius: 20px;
   backdrop-filter: blur(10px);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
