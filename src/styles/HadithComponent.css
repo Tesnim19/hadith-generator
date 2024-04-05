@@ -165,3 +165,60 @@ body {
 .favorite-button.favorited {
   background-color: #ff0000;
 }
+
+/* HadithComponent.css */
+
+/* Added to adjust button hover color */
+.share-button:hover {
+  background-color: #0056b3;
+}
+
+/* Adjusted button padding for consistency */
+.favorite-button,
+.remove-button,
+.share-button,
+.generate-button {
+  padding: 8px 16px; /* Adjust padding for better button appearance */
+}
+
+/* Adjusted font size for consistency */
+.generate-button {
+  font-size: 14px;
+}
+
+/* Adjusted font color for consistency */
+.favorite-button.favorited {
+  color: #ffffff;
+}
+
+/* Adjusted side cards layout for better spacing */
+.side-cards {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px; /* Added margin for better separation from main card */
+}
+
+/* Adjusted side cards width for better responsiveness */
+.recent-hadiths,
+.favorite-hadiths {
+  flex: 1;
+  margin: 0 10px; /* Adjusted margin for better spacing between side cards */
+}
+
+/* Adjusted hadith card content for better alignment */
+.hadith-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align text */
+}
+
+/* Adjusted remove button padding for better appearance */
+.remove-button {
+  padding: 5px 12px; /* Adjusted padding for better button appearance */
+}
+
+/* Adjusted favorited button color for better visibility */
+.favorite-button.favorited {
+  background-color: #dc3545; /* Changed favorited button color for better visibility */
+}
